@@ -21,7 +21,7 @@ class Pae
   
   property :id,             Serial
   property :title,          String
-  property :date,           String
+  property :date,           Date
 
   has n, :authors
   has n, :advisors
@@ -34,7 +34,7 @@ class Author
 
  include DataMapper::Resource
   
-  property :id,             Serial
+  property :huid,           Integer, :key => true, :length => 8 # HUID is a natural key, 8 digits long
   property :lname,          String
   property :mname,          String
   property :fname,          String
@@ -48,9 +48,9 @@ class Advisor
  include DataMapper::Resource
   
   property :id,             Serial
-  property :lname,          String
-  property :mname,          String
-  property :fname,          String
+  property :advisor_lname,          String
+  property :advisor_mname,          String
+  property :advisor_fname,          String
   
   belongs_to :pae
 
@@ -127,6 +127,7 @@ post '/create' do
   )
   if @pae.save
     @author = Author.new(
+      :huid   => params["huid"],
       :lname  => params["lname"],
       :fname  => params["fname"],
       :pae_id => @pae.id
