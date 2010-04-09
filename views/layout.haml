@@ -1,0 +1,17 @@
+!!! 5
+-# Basic layout template
+%html{ :lang => "en" }
+  %head
+    %title= @title
+    %link{ :href => "/style.css", :rel => "stylesheet", :type => "text/css", :media=> "screen", :charset=> "utf-8" }
+  %body
+    %nav
+      %ul
+        %li
+          %a{ :href => "/list"} List
+        %li
+          %a{ :href => "/new"} New
+    %section
+      %header
+        %h1#title= @title
+      = yield

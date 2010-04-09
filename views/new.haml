@@ -1,0 +1,14 @@
+%form{ :action => "/create", :method => "post", :id => "pae" }
+  %label(for="title") Title: 
+  %input{ :type => "text", :name => "title", :id => "title" }
+  %label(for="date")  
+    Date Published: 
+    %span.hint yyyymmdd
+  %input{ :type => "text", :name => "date", :id => "date" }
+  %fieldset 
+    %legend Author
+    %label.line(for="fname") First Name:
+    %input.line{ :type => "text", :name => "fname", :id => "fname" }
+    %label.line(for="lname") Last Name:
+    %input.line{ :type => "text", :name => "lname", :id => "lname" }
+  %input{ :type => "submit", :value => "Submit" }
