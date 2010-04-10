@@ -22,7 +22,8 @@ class Pae
   property :id,             Serial
   property :title,          String
   property :date,           Date
-
+  property :classified,     Boolean, :default => false   
+ 
   has n, :authors
   has n, :advisors
   has n, :clients
@@ -48,9 +49,9 @@ class Advisor
  include DataMapper::Resource
   
   property :id,             Serial
-  property :advisor_lname,          String
-  property :advisor_mname,          String
-  property :advisor_fname,          String
+  property :lname,          String
+  property :mname,          String
+  property :fname,          String
   
   belongs_to :pae
 
@@ -121,9 +122,7 @@ end
 # Create new Pae with params. If Pae is saved, also create and save Author. If successful, show the new record.
 
 post '/create' do
-  @pae = Pae.new(
-    :title  => params["title"],
-    :date   => params["date"]
+  @pae = Pae.new(params["pae"]
   )
   if @pae.save
     @author = Author.new(

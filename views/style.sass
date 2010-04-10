@@ -1,31 +1,61 @@
-!light_gray = #CECECE
-!med_gray = #696969
-!vLight_gray = #F6F6F6
+//# Define color constants
+!background = #E9E6D9
+!header = #483630
+!accent = #ffffff
+!link = #CE482B
+!text = #373530
+!highlight = #3981A0
+!highlighter = #77C0D9
 
 body
   :font
     :family georgia
     :size 12px/18px
   :margin 40px
-  :background = !light_gray
+  :background = !background
+nav ul li
+  :display inline
+  :padding-right 6px
+  :font-size 18px
+  :color = !text
+a, a:hover 
+  :color = !link
 h1, h2, h3, h4, h5, h6, legend, label
   :font
     :family helvetica
-  :color = !med_gray
+  :color = !header
 h1, h2, h3, h4, h5, h6
-  :text-shadow = !vLight_gray 0px 1px 0px 
+  :text-shadow = !accent 0px 1px 0px 
+h1
+  :margin-bottom 36px
+form
+  :width 650px
 label
-  :margin-bottom 6px
-  :display block
+  :padding 6px 6px 0
+  :text-align right
+  :float left
+  :width 120px
 input
-  :margin-bottom 18px
-  :display block
+  :margin-bottom 24px
+  :padding 2px
+  :font-size 14px
 .hint
-  :color = !med_gray
+  :color = !header
   :font
     :size 11px
 fieldset
-  :border none
+  :border 0
+  
   :padding-left 0
+  :margin-top 24px
 legend
-  :color #000
+  :color = !highlight
+  :text-align left
+  :font-size 18px
+.left
+  :float left
+  :width 300px
+  :border-right = !header 1px "solid"
+.right
+  :float right
+  :width 300px

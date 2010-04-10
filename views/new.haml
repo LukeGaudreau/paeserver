@@ -1,16 +1,34 @@
 %form{ :action => "/create", :method => "post", :id => "pae" }
-  %label(for="title") Title: 
-  %input{ :type => "text", :name => "title", :id => "title" }
-  %label(for="date")  
-    Date Published: 
-    %span.hint yyyymmdd
-  %input{ :type => "text", :name => "date", :id => "date" }
-  %fieldset 
-    %legend Author
-    %label.line(for="huid") Harvard ID #:
-    %input.line{ :type => "text", :name => "huid", :id => "huid" }
-    %label.line(for="fname") First Name:
-    %input.line{ :type => "text", :name => "fname", :id => "fname" }
-    %label.line(for="lname") Last Name:
-    %input.line{ :type => "text", :name => "lname", :id => "lname" }
+  %fieldset
+    %legend Document
+    %label(for="title") Title 
+    %input{ :type => "text", :name => "pae[title]", :id => "title" }
+    %br
+    %label{ :for => "date" } 
+      Date Published 
+      %span.hint yyyymmdd
+    %input{ :type => "text", :name => "pae[date]", :id => "date" }
+    %br
+    %label{ :for => "classified" } Classified?
+    %input{ :type => "checkbox", :name => "pae[classified]", :id => "classified" }
+  %fieldset.left
+    %legend Author 1
+    %label(for="huid") Harvard ID #
+    %input{ :type => "text", :name => "huid", :id => "huid" }
+    %br
+    %label(for="fname") First Name
+    %input{ :type => "text", :name => "fname", :id => "fname" }
+    %br
+    %label(for="lname") Last Name
+    %input{ :type => "text", :name => "lname", :id => "lname" }
+  %fieldset.right
+    %legend Author 2
+    %label(for="huid2") Harvard ID #
+    %input{ :type => "text", :name => "huid2", :id => "huid2" }
+    %br
+    %label(for="fname2") First Name
+    %input{ :type => "text", :name => "fname2", :id => "fname2" }
+    %br
+    %label(for="lname2") Last Name
+    %input{ :type => "text", :name => "lname2", :id => "lname2" }
   %input{ :type => "submit", :value => "Submit" }
