@@ -122,15 +122,9 @@ end
 # Create new Pae with params. If Pae is saved, also create and save Author. If successful, show the new record.
 
 post '/create' do
-  @pae = Pae.new(params["pae"]
-  )
+  @pae = Pae.new(params["pae"])
   if @pae.save
-    @author = Author.new(
-      :huid   => params["huid"],
-      :lname  => params["lname"],
-      :fname  => params["fname"],
-      :pae_id => @pae.id
-      )
+    @author = Author.new(params["author"])
     if @author.save
       redirect("/show/#{@pae.id}")
     end

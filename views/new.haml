@@ -14,21 +14,12 @@
   %fieldset.left
     %legend Author 1
     %label(for="huid") Harvard ID #
-    %input{ :type => "text", :name => "huid", :id => "huid" }
+    %input{ :type => "text", :name => "author[huid]", :id => "huid" }
     %br
     %label(for="fname") First Name
-    %input{ :type => "text", :name => "fname", :id => "fname" }
+    %input{ :type => "text", :name => "author[fname]", :id => "fname" }
     %br
     %label(for="lname") Last Name
-    %input{ :type => "text", :name => "lname", :id => "lname" }
-  %fieldset.right
-    %legend Author 2
-    %label(for="huid2") Harvard ID #
-    %input{ :type => "text", :name => "huid2", :id => "huid2" }
-    %br
-    %label(for="fname2") First Name
-    %input{ :type => "text", :name => "fname2", :id => "fname2" }
-    %br
-    %label(for="lname2") Last Name
-    %input{ :type => "text", :name => "lname2", :id => "lname2" }
+    %input{ :type => "text", :name => "author[lname]", :id => "lname" }
+ 
   %input{ :type => "submit", :value => "Submit" }
