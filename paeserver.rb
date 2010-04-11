@@ -1,87 +1,25 @@
+# This application is written using the Sinatra framework (http://sinatrarb.com)
+# (c) Luke Gaudreau 2010
+# LIS469
+
 # Load essential libraries
 
-require 'rubygems' 
+require 'rubygems'
 require 'sinatra'
-require 'dm-core'
-require 'dm-timestamps'
+require 'datamapper'
 require 'haml'
 require 'sass'
 
-# Have DataMapper create a sqlite db
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/paeserver.db")
-
-# Tell haml we want html5
-set :haml, { :format => :html5 }
-
-# Define Pae
-
-class Pae
-  
-  include DataMapper::Resource
-  
-  property :id,             Serial
-  property :title,          String
-  property :date,           Date
-  property :classified,     Boolean, :default => false   
- 
-  has n, :authors
-  has n, :advisors
-  has n, :clients
-end  
-
-# Define Author
-
-class Author
-
- include DataMapper::Resource
-  
-  property :huid,           Integer, :key => true, :length => 8 # HUID is a natural key, 8 digits long
-  property :lname,          String
-  property :mname,          String
-  property :fname,          String
-  
-  belongs_to :pae
-
+Dir.glob('lib/*.rb') do |lib|
+    require lib
 end
 
-class Advisor
+configure do
+  # Have DataMapper create a sqlite db
+  DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/paeserver.db")
 
- include DataMapper::Resource
-  
-  property :id,             Serial
-  property :lname,          String
-  property :mname,          String
-  property :fname,          String
-  
-  belongs_to :pae
-
-end
-
-class Client
-
- include DataMapper::Resource
-
-  property :id,             Serial  
-  property :org_name,       String
-  property :mname,          String
-  property :fname,          String
-  
-  belongs_to :pae
-  has n, :contacts
-
-end
-
-class Contact
-  include DataMapper::Resource
-  
-  property :id,             Serial
-  property :org_name,       String
-  property :mname,          String
-  property :fname,          String
-  
-  belongs_to :pae
-  has n, :contacts
-
+  # Tell haml we want html5
+  set :haml, { :format => :html5 }
 end
 
 # Create  or upgrade all tables at once, like magic :)
@@ -142,3 +80,4 @@ get '/style.css' do
   headers 'Content-Type' => 'text/css; charset=utf-8'
   sass :style
 end
+
