@@ -7,6 +7,6 @@ class Advisor
   property :mname,          String
   property :fname,          String
 
-  belongs_to :paeX
+  belongs_to :pae
 
 end

@@ -10,6 +10,8 @@ require 'datamapper'
 require 'haml'
 require 'sass'
 
+# load local Class libraries
+
 Dir.glob('lib/*.rb') do |lib|
     require lib
 end
