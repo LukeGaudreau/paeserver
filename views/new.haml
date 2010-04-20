@@ -2,24 +2,34 @@
   %fieldset
     %legend Document
     %label(for="title") Title 
-    %input{ :type => "text", :name => "pae[title]", :id => "title" }
+    %input{ :type => "text", :name => "data[pae][title]", :id => "title" }
     %br
     %label{ :for => "date" } 
       Date Published 
       %span.hint yyyymmdd
-    %input{ :type => "text", :name => "pae[date]", :id => "date" }
+    %input{ :type => "text", :name => "data[pae][date]", :id => "date" }
     %br
     %label{ :for => "classified" } Classified?
-    %input{ :type => "checkbox", :name => "pae[classified]", :id => "classified" }
+    %input{ :type => "checkbox", :name => "data[pae][classified]", :id => "classified" }
   %fieldset.left
     %legend Author 1
     %label(for="huid") Harvard ID #
-    %input{ :type => "text", :name => "author[huid]", :id => "huid" }
+    %input{ :type => "text", :name => "data[author][huid]", :id => "huid" }
     %br
     %label(for="fname") First Name
-    %input{ :type => "text", :name => "author[fname]", :id => "fname" }
+    %input{ :type => "text", :name => "data[author][fname]", :id => "fname" }
     %br
     %label(for="lname") Last Name
-    %input{ :type => "text", :name => "author[lname]", :id => "lname" }
- 
+    %input{ :type => "text", :name => "data[author][lname]", :id => "lname" }
+  -#%fieldset.right
+    -#%legend Author 2
+    -#%label(for="huid") Harvard ID #
+    -#%input{ :type => "text", :name => "author[huid]", :id => "huid" }
+    -#%br
+    -#%label(for="fname") First Name
+    -#%input{ :type => "text", :name => "author[fname]", :id => "fname" }
+    -#%br
+    -#%label(for="lname") Last Name
+    -#%input{ :type => "text", :name => "author[lname]", :id => "lname" }
+
   %input{ :type => "submit", :value => "Submit" }

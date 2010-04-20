@@ -1,5 +1,7 @@
 %ul 
   -# print each title
   - @paes.each do |pae,i|
-    %li= pae.title
+    %li
+      %a{ :href=> "/show/#{pae.id}" }
+        = pae.title
   
