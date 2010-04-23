@@ -4,6 +4,9 @@
   -# print each author's name
   - @pae.authors.each do |author,i|
     %li.author= author.fname + ' ' + author.lname + ' : ' + author.huid.to_s
+%ul.advisors
+  - @pae.advisors.each do |advisor,i|
+    %li.advisor= advisor.fname + ' ' + advisor.lname
 %p
   -# convert pae_id to string using builtin method, add xml extension
   %a{ :href => @pae.id.to_s + ".xml" } xml

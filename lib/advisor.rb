@@ -4,7 +4,6 @@ class Advisor
 
   property :id,             Serial
   property :lname,          String
-  property :mname,          String
   property :fname,          String
 
   belongs_to :pae

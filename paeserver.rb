@@ -65,14 +65,19 @@ post '/create' do
   @pae = Pae.new(params[:data][:pae])
   if @pae.save
     @author = Author.new(
-      :lname => params["data"]["author_1"]["lname"],
-      :fname => params["data"]["author_1"]["fname"],
-      :huid  => params["data"]["author_1"]["huid"],
+      :lname => params["data"]["author"]["lname_1"],
+      :fname => params["data"]["author"]["fname_1"],
+      :huid  => params["data"]["author"]["huid_1"],
       :pae_id => @pae.id
     )
-    if @author.save
+    @author.save
+    @advisor = Advisor.new(
+      :lname => params["data"]["advisor"]["lname_1"],
+      :fname => params["data"]["advisor"]["fname_1"],
+      :pae_id => @pae.id
+    )
+    @advisor.save
       redirect("/show/#{@pae.id}")
-    end
   else
     redirect("/list")
   end

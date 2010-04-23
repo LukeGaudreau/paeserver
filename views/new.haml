@@ -18,21 +18,23 @@
     %input{ :type => "text", :name => "data[author][huid_1]", :id => "huid_1" }
     %br
     %label(for="fname") First Name
-    %input{ :type => "text", :name => "data[author][fname_1]", :id => "fname_1" }
+    %input{ :type => "text", :name => "data[author][fname_1]", :id => "author_fname_1" }
     %br
     %label(for="lname") Last Name
-    %input{ :type => "text", :name => "data[author][lname_1]", :id => "lname_1" }
-  -#%fieldset.right
-    -#%legend Author 2
-    -#%label(for="huid") Harvard ID #
-    -#%input{ :type => "text", :name => "author[huid]", :id => "huid" }
-    -#%br
-    -#%label(for="fname") First Name
-    -#%input{ :type => "text", :name => "author[fname]", :id => "fname" }
-    -#%br
-    -#%label(for="lname") Last Name
-    -#%input{ :type => "text", :name => "author[lname]", :id => "lname" }
+    %input{ :type => "text", :name => "data[author][lname_1]", :id => "author_lname_1" }
+
   %p 
     %a{ :href => "#", :id => "addfield" }
       Add an Author
+  %fieldset#advisor
+    %legend Advisor 1
+    %label(for="fname") First Name
+    %input{ :type => "text", :name => "data[advisor][fname_1]", :id => "advisor_fname_1" }
+    %br
+    %label(for="lname") Last Name
+    %input{ :type => "text", :name => "data[advisor][lname_1]", :id => "advisor_lname_1" }
+
+  %p 
+    %a{ :href => "#", :id => "addfield" }
+      Add an Advisor
   %input{ :type => "submit", :value => "Submit" }

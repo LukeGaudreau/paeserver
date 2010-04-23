@@ -26,13 +26,13 @@ This schema declares XML elements for Policy Analysis Exercises created by Stude
 <xs:element name="pae">
     <xs:complexType>
         <xs:sequence>
-            <xs:element name="title" type="xs:string" />
+            <xs:element name="title" type="xs:string" minOccurs="1" />
             <xs:element name="date" type="xs:date" />
-            <xs:element ref="authors" />
-            <xs:element ref="advisors" minOccurs="0" />
-            <xs:element ref="clients" minOccurs="0" />
-            <xs:element ref="policy_areas" minOccurs="0" />
-            <xs:element ref="files" minOccurs="0" />
+            <xs:element ref="authors" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="advisors" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="clients" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="policy_areas" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="files" minOccurs="0" maxOccurs="1" />
         </xs:sequence>
     <xs:attribute name="idno" use="required" type="xs:int" />
     <xs:attribute name="status" default="unclassified">
@@ -63,9 +63,9 @@ This schema declares XML elements for Policy Analysis Exercises created by Stude
 
 <xs:element name="huid">
     <xs:simpleType>
-        <xs:restriction base="xs:string">
+        <xs:restriction base="xs:int">
             <xs:minLength value="8" />
-            <xs:maxLength value="9" />
+            <xs:maxLength value="8" />
         </xs:restriction>
     </xs:simpleType>
 </xs:element>
