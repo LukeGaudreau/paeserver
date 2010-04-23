@@ -10,7 +10,7 @@ require 'datamapper'
 require 'haml'
 require 'sass'
 
-# load local Class libraries
+# load local libraries 
 
 Dir.glob('lib/*.rb') do |lib|
     require lib
@@ -56,7 +56,7 @@ end
 
 get '/new' do
   @title = "Add a new Policy Analysis Exercise"
-  haml :new
+  haml :new, {:layout => :form}
 end
 
 # Create new Pae with params. If Pae is saved, also create and save Author. If successful, show the new record.
@@ -64,7 +64,7 @@ end
 post '/create' do
   @pae = Pae.new(params[:data][:pae])
   if @pae.save
-    @author = Author.new (
+    @author = Author.new(
       :lname => params["data"]["author"]["lname"],
       :fname => params["data"]["author"]["fname"],
       :huid  => params["data"]["author"]["huid"],
