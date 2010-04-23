@@ -59,7 +59,7 @@ get '/new' do
   haml :new, {:layout => :form}
 end
 
-# Create new Pae with params. If Pae is saved, also create and save Author. If successful, show the new record.
+# Create new Pae with params. If Pae is saved, also create and save the rest. If successful, show the new record.
 
 post '/create' do
   @pae = Pae.new(params[:data][:pae])
@@ -81,7 +81,15 @@ post '/create' do
       :org_name => params["data"]["client"]["org_name_1"],
       :pae_id => @pae.id
     )
-    @client.save
+    if @client.save
+      @contact = Contact.new(
+        :lname => params["data"]["contact"]["lname_1"],
+        :fname => params["data"]["contact"]["fname_1"],
+        :position => params["data"]["contact"]["position_1"],
+        :client_id => @client.id
+      )
+      @contact.save
+    end
     redirect("/show/#{@pae.id}")
   else
     redirect("/list")

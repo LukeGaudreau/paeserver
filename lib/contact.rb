@@ -2,11 +2,10 @@ class Contact
   include DataMapper::Resource
 
   property :id,             Serial
-  property :org_name,       String
-  property :mname,          String
+  property :lname,          String
   property :fname,          String
+  property :position,       String
 
-  belongs_to :pae
-  has n, :contacts
+  belongs_to :client
 
 end

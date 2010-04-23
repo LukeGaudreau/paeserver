@@ -9,7 +9,11 @@
     %li.advisor= advisor.fname + ' ' + advisor.lname
 %ul.clients
   - @pae.clients.each do |client,i|
-    %li.client= client.org_name
+    %li.client
+      = client.org_name
+      %ul.contacts
+        - @pae.clients.contacts.each do |contact,i|
+          %li.contact= contact.fname + ' ' + contact.lname
 %p
   -# convert pae_id to string using builtin method, add xml extension
   %a{ :href => @pae.id.to_s + ".xml" } xml
