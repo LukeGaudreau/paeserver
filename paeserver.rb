@@ -77,7 +77,12 @@ post '/create' do
       :pae_id => @pae.id
     )
     @advisor.save
-      redirect("/show/#{@pae.id}")
+    @client = Client.new(
+      :org_name => params["data"]["client"]["org_name_1"],
+      :pae_id => @pae.id
+    )
+    @client.save
+    redirect("/show/#{@pae.id}")
   else
     redirect("/list")
   end

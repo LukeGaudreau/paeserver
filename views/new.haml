@@ -12,29 +12,36 @@
     %br
     %label{ :for => "classified" } Classified?
     %input{ :type => "checkbox", :name => "data[pae][classified]", :id => "classified" }
-  %fieldset#author
+  %fieldset.author
     %legend Author 1
-    %label(for="huid") Harvard ID #
+    %label(for="huid_1") Harvard ID #
     %input{ :type => "text", :name => "data[author][huid_1]", :id => "huid_1" }
     %br
-    %label(for="fname") First Name
+    %label(for="fname_1") First Name
     %input{ :type => "text", :name => "data[author][fname_1]", :id => "author_fname_1" }
     %br
-    %label(for="lname") Last Name
+    %label(for="lname_1") Last Name
     %input{ :type => "text", :name => "data[author][lname_1]", :id => "author_lname_1" }
 
   %p 
     %a{ :href => "#", :id => "addfield" }
       Add an Author
-  %fieldset#advisor
+  %fieldset.advisor
     %legend Advisor 1
-    %label(for="fname") First Name
+    %label(for="fname_1") First Name
     %input{ :type => "text", :name => "data[advisor][fname_1]", :id => "advisor_fname_1" }
     %br
-    %label(for="lname") Last Name
+    %label(for="lname_1") Last Name
     %input{ :type => "text", :name => "data[advisor][lname_1]", :id => "advisor_lname_1" }
 
   %p 
     %a{ :href => "#", :id => "addfield" }
       Add an Advisor
+  %fieldset.client
+    %legend Client 1
+    %label(for="org_name_1") Org. Name
+    %input{ :type => "text", :name => "data[client][org_name_1]", :id => "org_name_1" }
+  %p 
+    %a{ :href => "#", :id => "addfield" }
+      Add a Client
   %input{ :type => "submit", :value => "Submit" }
