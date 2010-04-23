@@ -65,9 +65,9 @@ post '/create' do
   @pae = Pae.new(params[:data][:pae])
   if @pae.save
     @author = Author.new(
-      :lname => params["data"]["author"]["lname"],
-      :fname => params["data"]["author"]["fname"],
-      :huid  => params["data"]["author"]["huid"],
+      :lname => params["data"]["author_1"]["lname"],
+      :fname => params["data"]["author_1"]["fname"],
+      :huid  => params["data"]["author_1"]["huid"],
       :pae_id => @pae.id
     )
     if @author.save
