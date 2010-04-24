@@ -9,6 +9,7 @@ require 'sinatra'
 require 'datamapper'
 require 'haml'
 require 'sass'
+require 'builder'
 
 # load local libraries 
 
@@ -46,6 +47,17 @@ get '/show/:id' do |id|
     haml :show
   else
     redirect('/list')
+  end
+end
+
+get '/show/xml/:id' do|id|
+  headers "Content-Type" => "application/xml; charset=utf-8"
+  @pae = Pae.get(params[:id])
+  @title = @pae.title
+  if @pae
+    builder :show
+  else
+    redirect('list')  
   end
 end
 

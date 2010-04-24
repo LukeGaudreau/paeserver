@@ -5,31 +5,9 @@
     %title= @title
     %link{ :href => "/style.css", :rel => "stylesheet", :type => "text/css", :media=> "screen", :charset=> "utf-8" }
     %script{ :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" }
+    %script{ :src => "public/jquery.clonefield.js" }
     :javascript 
-      // Derived from http://allrite.net/webworld/node/1935
-      $(document).ready(function(){
-        $("#addfield").click(function() {
-          strFieldTitle = 'author';
-          strNewField = '<fieldset><legend>Author %</legend><label for="huid_%">Harvard ID #</label><input type="text" name="data[author][huid_%]" id="huid_%" /></fieldset>';
-          addField(strFieldTitle, strNewField);
-        });
-      });
-    
-      function addField(strFieldTitle, strNewField) {      
-        // We store a count of the total number of fields
-        strCountField = '#' + strFieldTitle + '_count';      
-        intFields = $(strCountField).val();
-
-        // Create the new ID/Name for the form element by replacing % with the current field count 
-        strNewField = strNewField.replace(/%/g, intFields);
-
-        // Increment the total field count and update the count field
-        intFields = Number(intFields) + 1;    
-        $(strCountField).val(intFields); 
-
-        //  Add the new field to the bottom of the form            
-        $(" fieldset:last").after(strNewField);    
-      }
+      
   %body
     %nav
       %ul
