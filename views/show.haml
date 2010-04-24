@@ -1,16 +1,15 @@
 -# add a class to style classified paes differently
 %section.pae[@pae.classified]
-  %header
-    %h1#title= @title
   %article
-    %p.date
-      submitted
-      = @pae.date
+    %h1#title= @title
     %h2.author
       by
       -# print each author's name
       - @pae.authors.each do |author,i|
         = author.fname + ' ' + author.lname
+    %p.date
+      submitted
+      = @pae.date
     %ul.advisors
       - @pae.advisors.each do |advisor,i|
         %li.advisor= advisor.fname + ' ' + advisor.lname

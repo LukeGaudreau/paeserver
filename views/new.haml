@@ -25,9 +25,7 @@
     %br
     %label(for="author_lname") Last Name
     %input{ :type => "text", :name => "author[][lname]", :id => "author_lname" }
-  %p
-    %a.copy{ :href => "#", :rel => ".author"}
-      Add an Author
+    %a.copy{ :href => "#", :rel => ".author", :title => "add another Author"}
   %fieldset.advisor
     %legend Advisor 
     %label(for="advisor_fname") First Name
@@ -35,9 +33,7 @@
     %br
     %label(for="advisor_lname") Last Name
     %input{ :type => "text", :name => "advisor[][lname]", :id => "advisor_lname" }
-  %p
-    %a.copy{ :href => "#", :rel => ".advisor"}
-      Add an Advisor
+    %a.copy{ :href => "#", :rel => ".advisor", :title => "add another Advisor"}
   %fieldset.client
     %legend Client
     %label(for="client_org_name") Org. Name
@@ -51,9 +47,7 @@
     %br
     %label(for="client_position") Contact Position
     %input{ :type => "text", :name => "client[][position]", :id => "client_position" }
-  %p
-    %a.copy{ :href => "#", :rel => ".client"}
-      Add a Client
+    %a.copy{ :href => "#", :rel => ".client", :title => "add another Client" }
   %fieldset.area
     %legend Policy Area
     -# Make checkboxes from hash table for each abbreviation => name in Area class

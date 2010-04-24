@@ -9,7 +9,7 @@
     :javascript 
       // derived from http://www.andresvidal.com/labs/relcopy.html
       $(function(){
-        var removeLink = ' <a class="remove" href="#" onclick="$(this).parent().slideUp(function(){ $(this).remove() }); return false">remove</a>';
+        var removeLink = ' <a class="remove" href="#" onclick="$(this).parent().slideUp(function(){ $(this).remove() }); return false" title="remove"></a>';
         $('a.copy').relCopy({limit:5, append:removeLink});
       });
   %body
