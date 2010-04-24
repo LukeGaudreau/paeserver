@@ -41,6 +41,7 @@ end
 
 get '/show/:id' do |id|
   @pae = Pae.get(params[:id])
+  @title = @pae.title
   if @pae
     haml :show
   else
@@ -49,13 +50,14 @@ get '/show/:id' do |id|
 end
 
 get '/list' do
-  @title = "List PAEs"
   @paes = Pae.all
+  @title = "Listing " + @paes.count.to_s + " Policy Analysis Exercises."
   haml :list
 end
 
 get '/new' do
   @title = "Add a new Policy Analysis Exercise"
+  @areas = Area.all
   haml :new, {:layout => :form}
 end
 
@@ -65,27 +67,27 @@ post '/create' do
   @pae = Pae.new(params[:data][:pae])
   if @pae.save
     @author = Author.new(
-      :lname => params["data"]["author"]["lname_1"],
-      :fname => params["data"]["author"]["fname_1"],
-      :huid  => params["data"]["author"]["huid_1"],
+      :lname => params["data"]["author"]["0"]["lname"],
+      :fname => params["data"]["author"]["0"]["fname"],
+      :huid  => params["data"]["author"]["0"]["huid"],
       :pae_id => @pae.id
     )
     @author.save
     @advisor = Advisor.new(
-      :lname => params["data"]["advisor"]["lname_1"],
-      :fname => params["data"]["advisor"]["fname_1"],
+      :lname => params["data"]["advisor"]["0"]["lname"],
+      :fname => params["data"]["advisor"]["0"]["fname"],
       :pae_id => @pae.id
     )
     @advisor.save
     @client = Client.new(
-      :org_name => params["data"]["client"]["org_name_1"],
+      :org_name => params["data"]["client"]["0"]["org_name"],
       :pae_id => @pae.id
     )
     if @client.save
       @contact = Contact.new(
-        :lname => params["data"]["contact"]["lname_1"],
-        :fname => params["data"]["contact"]["fname_1"],
-        :position => params["data"]["contact"]["position_1"],
+        :lname => params["data"]["contact"]["0"]["lname"],
+        :fname => params["data"]["contact"]["0"]["fname"],
+        :position => params["data"]["contact"]["0"]["position"],
         :client_id => @client.id
       )
       @contact.save

@@ -10,5 +10,6 @@ class Pae
   has n, :authors
   has n, :advisors
   has n, :clients
+  has n, :areas, :through => Resource 
 end
 
