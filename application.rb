@@ -80,13 +80,16 @@ end
 post '/create' do
   @pae = Pae.new(params[:data][:pae])
   if @pae.save
-    @author = Author.new(
-      :lname => params["data"]["author"]["0"]["lname"],
-      :fname => params["data"]["author"]["0"]["fname"],
-      :huid  => params["data"]["author"]["0"]["huid"],
-      :pae_id => @pae.id
-    )
-    @author.save
+    @authors = params["author"]
+    @authors.each do |p|
+      @author = @pae.authors.new(
+        :fname => p["fname"],
+        :lname => p["lname"],
+        :huid => p["huid"],
+        :pae_id => @pae.id
+      )
+      @author.save
+    end
     @advisor = Advisor.new(
       :lname => params["data"]["advisor"]["0"]["lname"],
       :fname => params["data"]["advisor"]["0"]["fname"],

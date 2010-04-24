@@ -1,5 +1,4 @@
 %form{ :action => "/create", :method => "post", :id => "pae" }
-  %input{ :type => "hidden", :name => "author_count", :id => "author_count", :value => "2" }
   %fieldset
     %legend Document
     %label(for="title") Title 
@@ -19,13 +18,13 @@
   %fieldset.author
     %legend Author
     %label(for="author_huid") Harvard ID #
-    %input{ :type => "text", :name => "author[huid][]", :id => "author_huid" }
+    %input{ :type => "text", :name => "author[][huid]", :id => "author_huid" }
     %br
     %label(for="author_fname") First Name
-    %input{ :type => "text", :name => "author[fname][]", :id => "author_fname" }
+    %input{ :type => "text", :name => "author[][fname]", :id => "author_fname" }
     %br
     %label(for="author_lname") Last Name
-    %input{ :type => "text", :name => "author[lname][]", :id => "author_lname" }
+    %input{ :type => "text", :name => "author[][lname]", :id => "author_lname" }
   %p
     %a.copy{ :href => "#", :rel => ".author"}
       Add an Author
