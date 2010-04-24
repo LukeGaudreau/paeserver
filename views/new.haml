@@ -2,19 +2,19 @@
   %fieldset
     %legend Document
     %label(for="title") Title 
-    %input{ :type => "text", :name => "data[pae][title]", :id => "title" }
+    %input{ :type => "text", :name => "pae[title]", :id => "title" }
     %br
     %label{ :for => "date" } 
       Date Published 
       %span.hint yyyymmdd
-    %input{ :type => "text", :name => "data[pae][date]", :id => "date" }
+    %input{ :type => "text", :name => "pae[date]", :id => "date" }
     %br
     %label{ :for => "url" }
       URL
-    %input{ :type => "text", :name => "data[pae][url]", :id => "url" }
+    %input{ :type => "text", :name => "pae[url]", :id => "url" }
     %br
     %label{ :for => "classified" } Classified?
-    %input{ :type => "checkbox", :name => "data[pae][classified]", :id => "classified" }
+    %input{ :type => "checkbox", :name => "pae[classified]", :id => "classified" }
   %fieldset.author
     %legend Author
     %label(for="author_huid") Harvard ID #
@@ -30,24 +30,30 @@
       Add an Author
   %fieldset.advisor
     %legend Advisor 
-    %label(for="advisor_0_fname") First Name
-    %input{ :type => "text", :name => "data[advisor][0][fname]", :id => "advisor_fname" }
+    %label(for="advisor_fname") First Name
+    %input{ :type => "text", :name => "advisor[][fname]", :id => "advisor_fname" }
     %br
-    %label(for="advisor_0_lname") Last Name
-    %input{ :type => "text", :name => "data[advisor][0][lname]", :id => "advisor_lname" }
+    %label(for="advisor_lname") Last Name
+    %input{ :type => "text", :name => "advisor[][lname]", :id => "advisor_lname" }
+  %p
+    %a.copy{ :href => "#", :rel => ".advisor"}
+      Add an Advisor
   %fieldset.client
-    %legend Client 1
-    %label(for="org_name") Org. Name
-    %input{ :type => "text", :name => "data[client][0][org_name]", :id => "org_name" }
+    %legend Client
+    %label(for="client_org_name") Org. Name
+    %input{ :type => "text", :name => "client[][org_name]", :id => "client_org_name" }
     %br
-    %label(for="contact_0_fname") Contact First Name
-    %input{ :type => "text", :name => "data[contact][0][fname]", :id => "fname" }
+    %label(for="client_fname") Contact First Name
+    %input{ :type => "text", :name => "client[][fname]", :id => "client_fname" }
     %br
-    %label(for="contact_0_lname") Contact Last Name
-    %input{ :type => "text", :name => "data[contact][0][lname]", :id => "lname" }    
+    %label(for="client_lname") Contact Last Name
+    %input{ :type => "text", :name => "client[][lname]", :id => "client_lname" }    
     %br
-    %label(for="contact_0_position") Contact Position
-    %input{ :type => "text", :name => "data[contact][0][position]", :id => "position" }
+    %label(for="client_position") Contact Position
+    %input{ :type => "text", :name => "client[][position]", :id => "client_position" }
+  %p
+    %a.copy{ :href => "#", :rel => ".client"}
+      Add a Client
   %fieldset.area
     %legend Policy Area
     -# Make checkboxes from hash table for each abbreviation => name in Area class

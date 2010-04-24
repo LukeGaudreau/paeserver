@@ -1,29 +1,30 @@
--# %h2.title= @pae.title
-%p.date
-  submitted
-  = @pae.date
-%h2.author
-  by
-  -# print each author's name
-  - @pae.authors.each do |author,i|
-    = author.fname + ' ' + author.lname
-%ul.advisors
-  - @pae.advisors.each do |advisor,i|
-    %li.advisor= advisor.fname + ' ' + advisor.lname
-%ul.clients
-  - @pae.clients.each do |client,i|
-    %li.client
-      = client.org_name
-      %ul.contacts
-        - @pae.clients.contacts.each do |contact,i|
-          %li.contact= contact.fname + ' ' + contact.lname + ', ' + contact.position
-%ul.areas
-  - # Use Area class to look up title of area by its slug
-  - @pae.area_paes.each do |area,i|
-  - @area = Area.first( :slug.like => area.area_slug )
-    %li.area= @area.title
-%p
-  -# convert pae_id to string using builtin method, add xml extension
-  %a{ :href => "xml/" + @pae.id.to_s } xml
-  |
-  %a{ :href => @pae.url } pdf
+-# add a class to style classified paes differently
+%section.pae[@pae.classified]
+  %header
+    %h1#title= @title
+  %article
+    %p.date
+      submitted
+      = @pae.date
+    %h2.author
+      by
+      -# print each author's name
+      - @pae.authors.each do |author,i|
+        = author.fname + ' ' + author.lname
+    %ul.advisors
+      - @pae.advisors.each do |advisor,i|
+        %li.advisor= advisor.fname + ' ' + advisor.lname
+    %ul.clients
+      - @pae.clients.each do |client,i|
+        %li.client= client.org_name
+        %li.contact= client.fname + ' ' + client.lname + ', ' + client.position
+    %ul.areas
+      - # Use Area class to look up title of area by its slug
+      - @pae.area_paes.each do |area,i|
+      - @area = Area.first( :slug.like => area.area_slug )
+        %li.area= @area.title
+    %p
+      -# convert pae_id to string using builtin method, add xml extension
+      %a{ :href => "xml/" + @pae.id.to_s } xml
+      |
+      %a{ :href => @pae.url } pdf

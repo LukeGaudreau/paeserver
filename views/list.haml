@@ -1,7 +1,10 @@
-%ul 
-  -# print each title
-  - @paes.each do |pae,i|
-    %li
-      %a{ :href=> "/show/#{pae.id}" }
-        = pae.title
+%section.paes
+  %header
+    %h1#title= @title
+  %ul 
+    -# print each title
+    - @paes.each do |pae,i|
+      %li
+        %a{ :href=> "/show/#{pae.id}" }
+          = pae.title
   

@@ -78,7 +78,7 @@ post '/test' do
   @params.inspect
 end
 post '/create' do
-  @pae = Pae.new(params[:data][:pae])
+  @pae = Pae.new(params[:pae])
   if @pae.save
     @authors = params["author"]
     @authors.each do |p|
@@ -90,24 +90,25 @@ post '/create' do
       )
       @author.save
     end
-    @advisor = Advisor.new(
-      :lname => params["data"]["advisor"]["0"]["lname"],
-      :fname => params["data"]["advisor"]["0"]["fname"],
-      :pae_id => @pae.id
-    )
-    @advisor.save
-    @client = Client.new(
-      :org_name => params["data"]["client"]["0"]["org_name"],
-      :pae_id => @pae.id
-    )
-    if @client.save
-      @contact = Contact.new(
-        :lname => params["data"]["contact"]["0"]["lname"],
-        :fname => params["data"]["contact"]["0"]["fname"],
-        :position => params["data"]["contact"]["0"]["position"],
-        :client_id => @client.id
+    @advisors = params["advisor"]
+    @advisors.each do |p|
+      @advisor = @pae.advisors.new(
+        :fname => p["fname"],
+        :lname => p["lname"],
+        :pae_id => @pae.id
       )
-      @contact.save
+      @advisor.save
+    end
+    @clients = params["client"]
+    @clients.each do |p|
+      @client = @pae.clients.new(
+        :org_name => p["org_name"],
+        :lname => p["lname"],
+        :fname => p["fname"],
+        :position => p["position"],
+        :pae_id => @pae.id
+      )
+      @client.save
     end
     @areaP = params["data"]["paes"]["area_slug"]
     @areaP.each do |area,i|

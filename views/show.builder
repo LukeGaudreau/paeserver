@@ -30,13 +30,11 @@ xml.pae 'classified' => @pae.classified, 'idno' => @pae.id do
       xml.client do
         xml.org_name client.org_name
         xml.org_contact do
-          client.contacts.each do |contact,i|
-            xml.name do
-              xml.fname contact.fname
-              xml.lname contact.lname
-            end
-            xml.position contact.position
+          xml.name do
+            xml.fname client.fname
+            xml.lname client.lname
           end
+          xml.position client.position
         end
       end
     end

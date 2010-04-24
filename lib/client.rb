@@ -4,8 +4,10 @@ class Client
 
   property :id,             Serial
   property :org_name,       String
-
+  property :lname,          String
+  property :fname,          String
+  property :position,       String
+  
   belongs_to :pae
-  has n, :contacts
 
 end
