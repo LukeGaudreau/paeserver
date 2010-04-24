@@ -18,8 +18,10 @@
         - @pae.clients.contacts.each do |contact,i|
           %li.contact= contact.fname + ' ' + contact.lname + ', ' + contact.position
 %ul.areas
-  - @pae.areas.each do |area,i|
-    %li.area area.title
+  - # Use Area class to look up title of area
+  - @pae.area_paes.each do |area,i|
+  - @area = Area.first( :slug.like => area.area_slug )
+    %li.area= @area.title
 %p
   -# convert pae_id to string using builtin method, add xml extension
   %a{ :href => @pae.id.to_s + ".xml" } xml
