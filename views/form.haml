@@ -5,9 +5,13 @@
     %title= @title
     %link{ :href => "/style.css", :rel => "stylesheet", :type => "text/css", :media=> "screen", :charset=> "utf-8" }
     %script{ :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" }
-    %script{ :src => "public/jquery.clonefield.js" }
+    %script{ :src => "relCopy.jquery.js" }
     :javascript 
-      
+      // derived from http://www.andresvidal.com/labs/relcopy.html
+      $(function(){
+        var removeLink = ' <a class="remove" href="#" onclick="$(this).parent().slideUp(function(){ $(this).remove() }); return false">remove</a>';
+        $('a.copy').relCopy({limit:5, append:removeLink});
+      });
   %body
     %nav
       %ul

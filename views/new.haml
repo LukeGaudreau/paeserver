@@ -18,17 +18,16 @@
     %input{ :type => "checkbox", :name => "data[pae][classified]", :id => "classified" }
   %fieldset.author
     %legend Author
-    %label(for="author_0_huid") Harvard ID #
-    %input{ :type => "text", :name => "data[author][0][huid]", :id => "author_0_huid" }
+    %label(for="author_huid") Harvard ID #
+    %input{ :type => "text", :name => "author[huid][]", :id => "author_huid" }
     %br
-    %label(for="author_0_fname") First Name
-    %input{ :type => "text", :name => "data[author][0][fname]", :id => "author_0_fname" }
+    %label(for="author_fname") First Name
+    %input{ :type => "text", :name => "author[fname][]", :id => "author_fname" }
     %br
-    %label(for="author_0_lname") Last Name
-    %input{ :type => "text", :name => "data[author][0][lname]", :id => "author_0_lname" }
-
-  %p 
-    %a{ :href => "#", :id => "addfield" }
+    %label(for="author_lname") Last Name
+    %input{ :type => "text", :name => "author[lname][]", :id => "author_lname" }
+  %p
+    %a.copy{ :href => "#", :rel => ".author"}
       Add an Author
   %fieldset.advisor
     %legend Advisor 
@@ -37,10 +36,6 @@
     %br
     %label(for="advisor_0_lname") Last Name
     %input{ :type => "text", :name => "data[advisor][0][lname]", :id => "advisor_lname" }
-
-  %p 
-    %a{ :href => "#", :id => "addfield" }
-      Add an Advisor
   %fieldset.client
     %legend Client 1
     %label(for="org_name") Org. Name
@@ -54,9 +49,6 @@
     %br
     %label(for="contact_0_position") Contact Position
     %input{ :type => "text", :name => "data[contact][0][position]", :id => "position" }
-  %p 
-    %a{ :href => "#", :id => "addfield" }
-      Add a Client
   %fieldset.area
     %legend Policy Area
     -# Make checkboxes from hash table for each abbreviation => name in Area class
