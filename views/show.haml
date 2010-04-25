@@ -1,22 +1,36 @@
 -# add a class to style classified paes differently
 %section.pae[@pae.classified]
   %article
-    %h1#title= @title
-    %h2.author
+    %h1.title= @title
+    %h2.authors
       by
-      -# print each author's name
-      - @pae.authors.each do |author,i|
-        = author.fname + ' ' + author.lname
-    %p.date
-      submitted
-      = @pae.date
-    %ul.advisors
-      - @pae.advisors.each do |advisor,i|
-        %li.advisor= advisor.fname + ' ' + advisor.lname
-    %ul.clients
-      - @pae.clients.each do |client,i|
-        %li.client= client.org_name
-        %li.contact= client.fname + ' ' + client.lname + ', ' + client.position
+      -# print each author's name, add and before the last entry
+      - last = @pae.authors.length-1
+      - @pae.authors.each_with_index do |author,i|
+        - if i > 0 && i == last
+          = 'and ' + author.fname + ' ' + author.lname
+        - else
+          = author.fname + ' ' + author.lname
+    %p.submission<
+      Submitted to
+      - last = @pae.advisors.length-1
+      - @pae.advisors.each_with_index do |advisor,i|
+        - if i > 0 && i == last
+          %span.advisor= 'and ' + advisor.fname + ' ' + advisor.lname
+        - else 
+          %span.advisor= advisor.fname + ' ' + advisor.lname
+      on 
+      %span.date= ' ' + @pae.date.to_s + '.'
+    %p.clients
+      Prepared for
+      - last = @pae.clients.length-1
+      - @pae.clients.each_with_index do |client,i|
+        - if i > 0 && i == last
+          %span.contact= 'and ' + client.fname + ' ' + client.lname + ', ' + client.position + ' at'
+          %span.client= client.org_name
+        - else
+          %span.contact= client.fname + ' ' + client.lname + ', ' + client.position + ' at'
+          %span.client= client.org_name
     %ul.areas
       - # Use Area class to look up title of area by its slug
       - @pae.area_paes.each do |area,i|
