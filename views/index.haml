@@ -15,7 +15,13 @@
   records. The form is based on a 
   %a{ :href => "dictionary.pdf" }
     data dictionary.
-  The new record form allows adding additional fields (e.g. a 2nd author), but there is currently no validation. You can also list all records currently in the system. The records are sorted by date of publication. If you click on an individual PAE, you can see the details. From there, you can also view the XML record, the PDF of the document, or delete the record (please don't delete anything). The XML is generated on the fly from the database, and is styled using XSL (it looks similar to the HTML rendering, but there are a few differences).
+  The new record form allows adding additional fields (e.g. a 2nd author), but there is currently no validation. You can also list all records currently in the system. The records are sorted by date of publication. If you click on an individual PAE, you can see the details. From there, you can also view the XML record, the PDF of the document, or delete the record (please don't delete anything). The XML is generated on the fly from the database, and is styled using 
+  %a{ :href => "style.xsl"}<
+    XSL
+  (it looks similar to the HTML rendering, but there are a few differences) and validates against an 
+  %a{ :href => "pa.xsd" }<
+    XML Schema
+  \.
 %p 
   This is a database driven application, written in 
   %a{ :href => "http://ruby-lang.org" }<
