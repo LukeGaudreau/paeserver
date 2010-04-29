@@ -1,5 +1,6 @@
 # Rendering XML is super easy using Builder! See show.haml for explanations of logic, everything here is just modifed to work with builder. 
 xml.instruct! :xml, :version => '1.0', :encoding => 'utf-8'
+xml.instruct! 'xml-stylesheet', { :href => '/style.xsl', :type => 'text/xsl'}
 xml.pae 'classified' => @pae.classified, 'idno' => @pae.id do
   xml.title @pae.title
   xml.date @pae.date

@@ -1,2 +1,39 @@
 -# index 
-%p hello haml world
+%h1 LIS 469 - Final Project
+%h2 created by Luke Gaudreau
+%p This project is based on earlier work for LIS 469.
+%p
+  This site allows managing records for 
+  %a{ :href => "http://www.hks.harvard.edu/degrees/masters/mpp/curriculum/pae" }
+    Policy Analysis Exercises
+  (PAEs) produced by students at the
+  %a{ :href => "http://www.hks.harvard.edu" }<
+    Harvard Kennedy School. 
+%p 
+  It's a simple database driven application, written in 
+  %a{ :href => "http://ruby-lang.org" }<
+    Ruby
+  , and powered by 
+  %a{ :href => "http://www.sinatrarb.com" }<
+    Sinatra
+  , 
+  %a{ :href => "http://haml-lang.com" }<
+    HAML
+  ,
+  %a{ :href => "http://sass-lang.com"}<
+    SASS
+  , 
+  %a{ :href => "http://datamapper.org" }<
+    Datamapper
+  , 
+  %a{ :href => "http://diveintohtml5.org"}<
+    HTML5
+  , and of course...
+  %a{ :href => "http://web.simmons.edu/~benoit/LIS469"}
+    XML
+  !
+
+%p I wanted to be able to add new paes using HTML forms, list all PAEs in the system and show and individual PAE. Each individual record is displayed as HTML by default, but links to a full XML record and a PDF. The XML record is styled with XSL and links to the PDF.
+
+%p 
+  %em There is no form validation...please be nice!
