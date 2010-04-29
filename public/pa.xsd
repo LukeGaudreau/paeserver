@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:annotation>
+<xs:documentation xml:lang="en">
+PAE 0.1 XML Schema
+XML Schema for http://www.hks.harvard.edu/PAESchema
+
+Created 2010-02-23
+
+Created by 
+
+Luke Gaudreau (luke@infosoph.org)
+
+This schema declares XML elements for Policy Analysis Exercises created by Students in the Masters in Public Policy Program at the Harvard Kennedy School. It also uses some elements from the Dublin Core standard's namespace.
+</xs:documentation>
+</xs:annotation>
+
+<xs:element name="paes">
+	<xs:complexType>
+		<xs:sequence>
+		<xs:element ref="pae"  maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="pae">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="title" type="xs:string" minOccurs="1" />
+            <xs:element name="date" type="xs:date" />
+            <xs:element ref="authors" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="advisors" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="clients" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="policy_areas" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+    <xs:attribute name="idno" use="required" type="xs:int" />
+    <xs:attribute name="status" default="unclassified">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="classified" />
+                <xs:enumeration value="unclassified" />
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
+     </xs:complexType>
+</xs:element>
+	
+<xs:element name="authors">
+    <xs:complexType>
+    <xs:sequence>
+        <xs:element name="author" maxOccurs="unbounded">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="huid" />
+                <xs:element name="name" type="nameType" />
+            </xs:sequence>
+        </xs:complexType>
+        </xs:element>
+    </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="huid">
+    <xs:simpleType>
+        <xs:restriction base="xs:int">
+            <xs:minLength value="8" />
+            <xs:maxLength value="8" />
+        </xs:restriction>
+    </xs:simpleType>
+</xs:element>
+
+<xs:element name="advisors">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="advisor" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+    
+<xs:element name="advisor">
+    <xs:complexType>
+        <xs:sequence>
+           <xs:element name="name" type="nameType" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="clients">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="client" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="client">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="org_name" minOccurs="0" type="xs:string" />
+            <xs:element name="org_contact" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                   <xs:sequence>
+                       <xs:element name="name" minOccurs="0" type="nameType" />
+                       <xs:element name="position" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                   </xs:sequence> 
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="policy_areas">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="policy_area" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+    
+<xs:element name="policy_area">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="subject" minOccurs="0" />
+            <xs:element name="semleader" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="name" type="nameType" minOccurs="0" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="subject">
+    <xs:simpleType>
+        <xs:annotation>
+            <xs:documentation>
+                Policy Areas are defined by http://www.hks.harvard.edu/degrees/teaching-courses/teaching/policy
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Business and Government Policy" />
+            <xs:enumeration value="Democracy, Politics and Institutions" />
+            <xs:enumeration value="International and Global Affairs" />
+            <xs:enumeration value="International Trade and Finance" />
+            <xs:enumeration value="Nonprofit Sector" />
+            <xs:enumeration value="Political and Economic Development" />
+            <xs:enumeration value="Social and Urban Policy" />
+        </xs:restriction>
+    </xs:simpleType>
+</xs:element>
+
+    
+<xs:complexType name="nameType">
+    <xs:sequence>
+        <xs:element name="lname" type="xs:string" />
+        <xs:element name="fname" type="xs:string" />
+    </xs:sequence>
+</xs:complexType>
+    
+</xs:schema>
