@@ -62,7 +62,7 @@ get '/show/xml/:id' do|id|
 end
 
 get '/list' do
-  @paes = Pae.all
+  @paes = Pae.all(:order => [ :title.desc ])
   @title = "Listing " + @paes.count.to_s + " Policy Analysis Exercises."
   haml :list
 end

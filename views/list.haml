@@ -2,9 +2,16 @@
   %header
     %h1#title= @title
   %ul 
-    -# print each title
+    -# print each pae, authors & title
     - @paes.each do |pae,i|
+    
       %li
+        - last = pae.authors.length-1
+        - pae.authors.each_with_index do |author,i|
+          - if i > 0 && i == last
+            = 'and ' + author.lname + ', '
+          - else
+            = author.lname
         %a{ :href=> "/show/#{pae.id}" }
           = pae.title
   
