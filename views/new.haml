@@ -2,7 +2,7 @@
   %fieldset
     %legend Document
     %label(for="title") Title 
-    %input{ :type => "text", :name => "pae[title]", :id => "title" }
+    %input{ :type => "text", :name => "pae[title]", :id => "title", :size => "50"}
     %br
     %label{ :for => "date" } 
       Date Published 
@@ -11,7 +11,7 @@
     %br
     %label{ :for => "url" }
       URL
-    %input{ :type => "text", :name => "pae[url]", :id => "url" }
+    %input{ :type => "text", :name => "pae[url]", :id => "url", :size => "50"}
     %br
     %label{ :for => "classified" } Classified?
     %input{ :type => "checkbox", :name => "pae[classified]", :id => "classified" }
@@ -21,32 +21,32 @@
     %input{ :type => "text", :name => "author[][huid]", :id => "author_huid" }
     %br
     %label(for="author_fname") First Name
-    %input{ :type => "text", :name => "author[][fname]", :id => "author_fname" }
+    %input{ :type => "text", :name => "author[][fname]", :id => "author_fname", :size => "50" }
     %br
     %label(for="author_lname") Last Name
-    %input{ :type => "text", :name => "author[][lname]", :id => "author_lname" }
+    %input{ :type => "text", :name => "author[][lname]", :id => "author_lname", :size => "50"}
     %a.copy{ :href => "#", :rel => ".author", :title => "add another Author"}
   %fieldset.advisor
     %legend Advisor 
     %label(for="advisor_fname") First Name
-    %input{ :type => "text", :name => "advisor[][fname]", :id => "advisor_fname" }
+    %input{ :type => "text", :name => "advisor[][fname]", :id => "advisor_fname" , :size => "50"}
     %br
     %label(for="advisor_lname") Last Name
-    %input{ :type => "text", :name => "advisor[][lname]", :id => "advisor_lname" }
+    %input{ :type => "text", :name => "advisor[][lname]", :id => "advisor_lname" , :size => "50"}
     %a.copy{ :href => "#", :rel => ".advisor", :title => "add another Advisor"}
   %fieldset.client
     %legend Client
     %label(for="client_org_name") Org. Name
-    %input{ :type => "text", :name => "client[][org_name]", :id => "client_org_name" }
+    %input{ :type => "text", :name => "client[][org_name]", :id => "client_org_name", :size => "50"}
     %br
     %label(for="client_fname") Contact First Name
-    %input{ :type => "text", :name => "client[][fname]", :id => "client_fname" }
+    %input{ :type => "text", :name => "client[][fname]", :id => "client_fname", :size => "50"}
     %br
     %label(for="client_lname") Contact Last Name
-    %input{ :type => "text", :name => "client[][lname]", :id => "client_lname" }    
+    %input{ :type => "text", :name => "client[][lname]", :id => "client_lname", :size => "50"}    
     %br
     %label(for="client_position") Contact Position
-    %input{ :type => "text", :name => "client[][position]", :id => "client_position" }
+    %input{ :type => "text", :name => "client[][position]", :id => "client_position", :size => "50"}
     %a.copy{ :href => "#", :rel => ".client", :title => "add another Client" }
   %fieldset.area
     %legend Policy Area
