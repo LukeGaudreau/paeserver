@@ -15,30 +15,23 @@ This schema declares XML elements for Policy Analysis Exercises created by Stude
 </xs:documentation>
 </xs:annotation>
 
-<xs:element name="paes">
-	<xs:complexType>
-		<xs:sequence>
-		<xs:element ref="pae"  maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-</xs:element>
-
 <xs:element name="pae">
     <xs:complexType>
         <xs:sequence>
-            <xs:element name="title" type="xs:string" minOccurs="1" />
+            <xs:element name="title" type="xs:string" />
             <xs:element name="date" type="xs:date" />
-            <xs:element ref="authors" minOccurs="0" maxOccurs="1" />
-            <xs:element ref="advisors" minOccurs="0" maxOccurs="1" />
-            <xs:element ref="clients" minOccurs="0" maxOccurs="1" />
-            <xs:element ref="policy_areas" minOccurs="0" maxOccurs="1" />
+            <xs:element name="url" type="xs:string" />
+            <xs:element ref="authors" />
+            <xs:element ref="advisors" minOccurs="0" />
+            <xs:element ref="clients" minOccurs="0" />
+            <xs:element ref="policy_areas" minOccurs="0" />
         </xs:sequence>
     <xs:attribute name="idno" use="required" type="xs:int" />
-    <xs:attribute name="status" default="unclassified">
+    <xs:attribute name="classified" default="false">
         <xs:simpleType>
             <xs:restriction base="xs:string">
-                <xs:enumeration value="classified" />
-                <xs:enumeration value="unclassified" />
+                <xs:enumeration value="true" />
+                <xs:enumeration value="false" />
             </xs:restriction>
         </xs:simpleType>
     </xs:attribute>
@@ -51,22 +44,13 @@ This schema declares XML elements for Policy Analysis Exercises created by Stude
         <xs:element name="author" maxOccurs="unbounded">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="huid" />
+                <xs:element name="huid" type="xs:string "/>
                 <xs:element name="name" type="nameType" />
             </xs:sequence>
         </xs:complexType>
         </xs:element>
     </xs:sequence>
     </xs:complexType>
-</xs:element>
-
-<xs:element name="huid">
-    <xs:simpleType>
-        <xs:restriction base="xs:int">
-            <xs:minLength value="8" />
-            <xs:maxLength value="8" />
-        </xs:restriction>
-    </xs:simpleType>
 </xs:element>
 
 <xs:element name="advisors">
@@ -116,23 +100,8 @@ This schema declares XML elements for Policy Analysis Exercises created by Stude
         </xs:sequence>
     </xs:complexType>
 </xs:element>
-    
-<xs:element name="policy_area">
-    <xs:complexType>
-        <xs:sequence>
-            <xs:element ref="subject" minOccurs="0" />
-            <xs:element name="semleader" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="name" type="nameType" minOccurs="0" />
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-        </xs:sequence>
-    </xs:complexType>
-</xs:element>
 
-<xs:element name="subject">
+<xs:element name="policy_area">
     <xs:simpleType>
         <xs:annotation>
             <xs:documentation>
@@ -150,12 +119,33 @@ This schema declares XML elements for Policy Analysis Exercises created by Stude
         </xs:restriction>
     </xs:simpleType>
 </xs:element>
-
+    
+<xs:element name="files">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="file" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="urn" type="xs:string" maxOccurs="1" />
+                        <xs:element name="size" type="xs:integer" maxOccurs="1" />
+                        <xs:element name="type" type="xs:string" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>
+                                The type element must comply with MIME Type standards
+                            </xs:documentation>
+                        </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
     
 <xs:complexType name="nameType">
     <xs:sequence>
-        <xs:element name="lname" type="xs:string" />
         <xs:element name="fname" type="xs:string" />
+        <xs:element name="lname" type="xs:string" />
     </xs:sequence>
 </xs:complexType>
     
