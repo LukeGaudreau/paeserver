@@ -1,7 +1,11 @@
 -# index 
 %h1 LIS 469 - Final Project
 %h2 created by Luke Gaudreau
-%p This project is based on earlier work for LIS 469.
+%p 
+  This project is based on 
+  %a{ :href => "http://web.simmons.edu/~gaudreal/lis469" }<
+    earlier work for LIS 469
+  \.
 %p
   This site allows managing records for 
   %a{ :href => "http://www.hks.harvard.edu/degrees/masters/mpp/curriculum/pae" }
@@ -15,7 +19,7 @@
   records. The form is based on a 
   %a{ :href => "dictionary.pdf" }
     data dictionary.
-  The new record form allows adding additional fields (e.g. a 2nd author), but there is currently no validation. You can also list all records currently in the system. The records are sorted by date of publication. If you click on an individual PAE, you can see the details. From there, you can also view the XML record, the PDF of the document, or delete the record (please don't delete anything). The XML is generated on the fly from the database, and is styled using 
+  The new record form allows adding additional fields (e.g. a 2nd author), but there is currently no validation. You can also list all records currently in the system. The records are sorted by date of publication. If you click on an individual PAE, you can see the details. From there, you can also view the XML record(don't forget to view source), the PDF of the document, or delete the record (please don't delete anything). The XML is generated on the fly from the database, and is styled using 
   %a{ :href => "style.xsl"}<
     XSL
   (it looks similar to the HTML rendering, but there are a few differences) and validates against an 
@@ -49,6 +53,13 @@
   %a{ :href => "http://github.com/infosoph/paeserver"}<
     view the source code
   for the project on Github.
-
+%h3 TODO
+%p Although I feel my work meets the requirements for the assignment, due to time constraints, I was unable to complete some essential functionality. Before deployment, this app will need:
+%ul 
+  %li Form validation & error checking
+  %li Build a method for editing/updating records
+  %li Build methods for searching records
+  %li Authentication/User Access
+  %li Adopt some Dublin Core elements
 %p 
-  %em There is no form validation...please be nice!
+  %em Again, there is no form validation...please be nice!
