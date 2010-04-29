@@ -62,7 +62,7 @@ get '/show/xml/:id' do|id|
 end
 
 get '/list' do
-  @paes = Pae.all(:order => [ :title.desc ])
+  @paes = Pae.all(:order => [ :title.asc ])
   @title = "Listing " + @paes.count.to_s + " Policy Analysis Exercises."
   haml :list
 end
@@ -126,6 +126,11 @@ post '/create' do
 end
 
 get '/delete/:id' do
+  @pae = Pae.get(params[:id])
+  unless @pae.nil?
+    @pae.destroy!
+  end
+  redirect('/list')
 end
 
 # Intercept css request and pass to sass

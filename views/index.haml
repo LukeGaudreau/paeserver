@@ -9,8 +9,15 @@
   (PAEs) produced by students at the
   %a{ :href => "http://www.hks.harvard.edu" }<
     Harvard Kennedy School. 
+  You can create
+  %a{ :href => "/new"}<
+    New
+  records. The form is based on a 
+  %a{ :href => "dictionary.pdf" }
+    data dictionary.
+  The new record form allows adding additional fields (e.g. a 2nd author), but there is currently no validation. You can also list all records currently in the system. The records are sorted by date of publication. If you click on an individual PAE, you can see the details. From there, you can also view the XML record, the PDF of the document, or delete the record (please don't delete anything). The XML is generated on the fly from the database, and is styled using XSL (it looks similar to the HTML rendering, but there are a few differences).
 %p 
-  It's a simple database driven application, written in 
+  This is a database driven application, written in 
   %a{ :href => "http://ruby-lang.org" }<
     Ruby
   , and powered by 
@@ -32,8 +39,10 @@
   %a{ :href => "http://web.simmons.edu/~benoit/LIS469"}
     XML
   !
-
-%p I wanted to be able to add new paes using HTML forms, list all PAEs in the system and show and individual PAE. Each individual record is displayed as HTML by default, but links to a full XML record and a PDF. The XML record is styled with XSL and links to the PDF.
+  You can 
+  %a{ :href => "http://github.com/infosoph/paeserver"}<
+    view the source code
+  for the project on Github.
 
 %p 
   %em There is no form validation...please be nice!
