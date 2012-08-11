@@ -2,8 +2,8 @@ class Author
 
  include DataMapper::Resource
 
-# HUID is a natural key, 8 digits long
-  property :huid,           Integer, :key => true, :length => 8
+# HUID is a natural key
+  property :huid,           Integer, :key => true
   property :lname,          String
   property :fname,          String
 

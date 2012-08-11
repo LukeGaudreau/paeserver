@@ -41,8 +41,9 @@ configure do
   set :haml, { :format => :html5 }
 end
 
+DataMapper.finalize
 # Create  or upgrade all tables at once, like magic :)
-# DataMapper.auto_upgrade!
+DataMapper.auto_upgrade!
 
 # set utf-8 for outgoing
 before do
