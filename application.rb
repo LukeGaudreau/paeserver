@@ -42,7 +42,7 @@ configure do
 end
 
 # Create  or upgrade all tables at once, like magic :)
-DataMapper.auto_upgrade!
+# DataMapper.auto_upgrade!
 
 # set utf-8 for outgoing
 before do
