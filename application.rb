@@ -25,10 +25,13 @@ require 'sass'
 require 'builder'
 
 # load local libraries 
-
-Dir.glob('lib/*.rb') do |lib|
-    require lib
-end
+$LOAD_PATH.unshift( File.join( File.dirname(__FILE__), 'lib' ) )
+require 'advisor'
+require 'area'
+require 'author'
+require 'client'
+require 'contact'
+require 'pae'
 
 configure do
   # Have DataMapper create a sqlite db
