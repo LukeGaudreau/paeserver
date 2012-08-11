@@ -35,7 +35,7 @@ require 'pae'
 
 configure do
   # Have DataMapper create a sqlite db
-  DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/paeserver.db")
+  DataMapper::setup(:default, (ENV["DATABASE_URL"] || "sqlite3://#{Dir.pwd}/paeserver.db"))
 
   # Tell haml we want html5
   set :haml, { :format => :html5 }
