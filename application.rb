@@ -19,7 +19,7 @@
 
 require 'rubygems'
 require 'sinatra'
-require 'datamapper'
+require 'data_mapper'
 require 'haml'
 require 'sass'
 require 'builder'
