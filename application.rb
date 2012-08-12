@@ -53,8 +53,7 @@ end
 # Define routes
 
 get '/' do
-  @title = "Welcome to the PAE Server"
-  haml :index
+  redirect('list')  
 end
 
 get '/show/:id' do |id|
